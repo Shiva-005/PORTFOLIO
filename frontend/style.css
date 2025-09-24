@@ -1,0 +1,437 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-dark: #222831;
+    --color-gray: #393e46;
+    --color-taupe: #e8b872;
+    --color-beige: #aaa8a6;
+}
+
+body {
+    background-color: var(--color-dark);
+    font-family: sans-serif;
+    color: #f5f5f5;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: #a0a0a0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* -------------------------
+   Layout: main + sidebar
+   ------------------------- */
+.main-container {
+    display: grid;
+    max-width: 1200px;
+    grid-template-columns: 350px 1fr;
+    gap: 50px;
+    padding-top: 40px;
+    margin: auto;
+}
+
+.sidebar {
+    height: 90vh;
+    background-color: var(--color-gray);
+    border: 1px solid #3a3a3a;
+    border-radius: 16px;
+    padding: 40px;
+    position: sticky;
+    top: 40px;
+    overflow: auto;
+}
+
+/* -------------------------
+   Profile area
+   ------------------------- */
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 2px solid grey;
+}
+
+.profile-image-container img {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.image-modal img {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-btn:hover {
+    color: var(--color-taupe);
+}
+
+.profile-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.profile-name p {
+    width: 10rem;
+    border: 2px solid black;
+    border-radius: 8px;
+    color: var(--color-taupe);
+    background-color: black;
+    padding: 4px;
+}
+
+/* -------------------------
+   Contact / Social
+   ------------------------- */
+.contact-container {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 8px;
+    border-bottom: 2px solid grey;
+}
+
+.label {
+    color: var(--color-beige);
+}
+
+.social-media-container {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.social-media-container img {
+    height: 30px;
+    vertical-align: middle;
+}
+
+/* -------------------------
+   Main section content
+   ------------------------- */
+.main-section {
+    background-color: var(--color-gray);
+    border: 1px solid #3a3a3a;
+    border-radius: 16px;
+    padding: 40px;
+}
+
+.main-content-containers {
+    padding: 10px;
+    height: auto;
+}
+
+.main-content-containers p {
+    font-family: serif;
+    color: rgb(211, 200, 200);
+    text-align: justify;
+}
+
+.main-content-containers h2 {
+    margin-bottom: 20px;
+    width: 5em;
+    border-bottom: 5px solid #eb9412;
+    border-bottom-right-radius: 10px;
+    padding-bottom: 4px;
+}
+
+/* -------------------------
+   Nav Bar
+   ------------------------- */
+
+nav {
+    position: sticky;
+    top: 0;
+    background-color: rgba(34, 40, 49, 0.85);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    border-radius: 5px;
+    padding: 15px 20px;
+}
+
+
+nav a.active {
+    color: #eb9412;
+    font-weight: bold;
+    border-bottom: 2px solid #eb9412;
+}
+
+#about,
+#skills,
+#education {
+    border-bottom: 1px solid grey;
+}
+
+/* -------------------------
+   Skills
+   ------------------------- */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+.skills-container .card {
+    height: 200px;
+    width: 200px;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-dark);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.skills-container .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+}
+
+.skills-container .card i {
+    font-size: 80px;
+    margin-bottom: 15px;
+}
+
+.skills-container .card p {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--color-beige);
+}
+
+/* -------------------------
+   Education
+   ------------------------- */
+.education-card-container {
+    padding: 15px;
+    border-left: 2px solid gray;
+}
+
+.bubble {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    border: 3px solid #eb9412;
+    display: inline-block;
+    position: relative;
+    right: 25px;
+}
+
+/* -------------------------
+   Projects
+   ------------------------- */
+
+.projects-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+}
+
+.project-container-card {
+    background-color: var(--color-dark);
+    border: 1px solid var(--color-dark);
+    border-radius: 10px;
+    width: 300px;
+    padding: 8px;
+    margin: 10px;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-container-card img {
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-bottom: 5px;
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.project-container-card h4 {
+    font-weight: 800;
+    font-size: large;
+    margin-bottom: 5px;
+}
+
+.project-container-card p {
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+    margin-bottom: 10px;
+}
+
+.project-container-card .tech-used {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.project-container-card .tech-used div {
+    padding: 8px;
+    text-align: center;
+    background-color: black;
+    border: 1px solid black;
+    border-radius: 8px;
+    color: #eb9412;
+}
+
+/* -------------------------
+   Small, safe improvements
+   ------------------------- */
+
+.project-container-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+}
+
+/* Tablet / narrower desktops */
+@media (max-width: 992px) {
+    .main-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .sidebar {
+        position: relative;
+        height: auto;
+        top: 0;
+        padding: 24px;
+    }
+
+    .profile-container {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .main-section {
+        padding: 24px;
+    }
+
+    /* make skill cards slightly smaller so they fit */
+    .skills-container .card {
+        width: 180px;
+        height: 180px;
+    }
+
+    /* projects layout: two columns where possible */
+    .projects-container {
+        justify-content: center;
+    }
+
+    .project-container-card {
+        width: calc(50% - 24px);
+        margin: 12px;
+    }
+
+    /* make profile image a touch smaller */
+    .profile-image-container img {
+        height: 90px;
+        width: 90px;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 600px) {
+    .main-container {
+        padding-top: 20px;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .skills-container {
+        justify-content: center;
+    }
+
+    .skills-container .card {
+        width: 150px;
+        height: 150px;
+    }
+
+    .skills-container .card i {
+        font-size: 50px;
+    }
+
+    .projects-container {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .project-container-card {
+        width: 100%;
+        max-width: 420px;
+        margin: 8px 0;
+    }
+
+    .main-section {
+        padding: 18px;
+    }
+
+    .main-content-containers h2 {
+        width: auto;
+    }
+}
