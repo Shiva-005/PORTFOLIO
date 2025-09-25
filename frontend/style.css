@@ -11,6 +11,34 @@
     --color-beige: #aaa8a6;
 }
 
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background:
+        linear-gradient(125deg, var(--color-dark) 25%, transparent 25%) -50px 0,
+        linear-gradient(225deg, var(--color-dark) 25%, transparent 25%) -50px 0,
+        linear-gradient(315deg, var(--color-dark) 25%, transparent 25%),
+        linear-gradient(45deg, var(--color-dark) 25%, transparent 25%);
+    background-size: 100px 100px;
+    background-color: #1a1f25;
+    animation: backgroundMove 30s linear infinite;
+}
+
+@keyframes backgroundMove {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 100px 100px;
+    }
+}
+
 body {
     background-color: var(--color-dark);
     font-family: sans-serif;
@@ -70,8 +98,13 @@ img {
     border-radius: 50%;
     object-fit: cover;
     cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
+.profile-image-container img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(235, 148, 18, 0.3);
+}
 
 .image-modal {
     display: none;
@@ -153,6 +186,11 @@ img {
 .social-media-container img {
     height: 30px;
     vertical-align: middle;
+    transition: transform 0.3s ease;
+}
+
+.social-media-container img:hover {
+    transform: scale(1.2) rotate(8deg);
 }
 
 /* -------------------------
@@ -168,6 +206,16 @@ img {
 .main-content-containers {
     padding: 10px;
     height: auto;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .main-content-containers p {
@@ -209,6 +257,27 @@ nav a.active {
     border-bottom: 2px solid #eb9412;
 }
 
+nav a {
+    position: relative;
+    transition: color 0.3s ease;
+    padding: 5px 0;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #eb9412;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
 #about,
 #skills,
 #education {
@@ -237,11 +306,25 @@ nav a.active {
     background-color: var(--color-dark);
     transition: all 0.3s ease;
     cursor: pointer;
+    transform-origin: center;
+    animation: cardAppear 0.5s ease backwards;
 }
 
 .skills-container .card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(235, 148, 18, 0.15);
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .skills-container .card i {
@@ -256,11 +339,216 @@ nav a.active {
 }
 
 /* -------------------------
+   Competative Programming Dashboard
+   ------------------------- */
+.competitive-dashboard {
+    background-color: var(--color-dark);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.platform-cards {
+    position: relative;
+    background: linear-gradient(145deg, #2a2f37, #232831);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.platform-card:hover {
+    transform: translateY(-5px);
+}
+
+.platform-header {
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.platform-header img {
+    width: 30px;
+    height: 30px;
+}
+
+.platform-header h3 {
+    color: var(--color-taupe);
+}
+
+.stats {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-item .label {
+    color: var(--color-beige);
+    font-size: 0.9rem;
+}
+
+.stat-item .value {
+    font-weight: bold;
+    color: #fff;
+}
+
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(34, 40, 49, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+}
+
+.loading-spinner {
+    border: 3px solid rgba(235, 148, 18, 0.3);
+    border-radius: 50%;
+    border-top: 3px solid var(--color-taupe);
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background-color: #2a2f37;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress-bar .progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-taupe), #eb9412);
+    border-radius: 3px;
+    transition: width 1s ease;
+}
+
+.progress-graph {
+    background: var(--color-dark);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    height: 300px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .platform-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .progress-graph {
+        height: 250px;
+    }
+}
+
+/* Add to your existing CSS */
+.platform-header {
+    position: relative;
+}
+
+.profile-link {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-taupe);
+    transition: color 0.3s ease;
+}
+
+.profile-link:hover {
+    color: #eb9412;
+}
+
+.platform-card .stats {
+    position: relative;
+}
+
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(34, 40, 49, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+}
+
+.loading-spinner {
+    border: 3px solid rgba(235, 148, 18, 0.3);
+    border-radius: 50%;
+    border-top: 3px solid var(--color-taupe);
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* -------------------------
    Education
    ------------------------- */
 .education-card-container {
     padding: 15px;
     border-left: 2px solid gray;
+}
+
+.education-card {
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: slideIn 0.5s ease forwards;
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.bubble {
+    animation: pulse 2s infinite;
 }
 
 .bubble {
@@ -271,6 +559,21 @@ nav a.active {
     display: inline-block;
     position: relative;
     right: 25px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(235, 148, 18, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(235, 148, 18, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(235, 148, 18, 0);
+    }
 }
 
 /* -------------------------
@@ -293,7 +596,32 @@ nav a.active {
     padding: 8px;
     margin: 10px;
     cursor: pointer;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.project-container-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(235, 148, 18, 0.1),
+            transparent);
+    transition: 0.5s;
+}
+
+.project-container-card:hover::before {
+    left: 100%;
+}
+
+.project-container-card:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 14px 28px rgba(235, 148, 18, 0.2);
 }
 
 .project-container-card img {

@@ -17,6 +17,9 @@
 
     <!-- ===== Custom Stylesheet ===== -->
     <link rel="stylesheet" href="style.css" />
+
+    <!-- Add Chart.js CDN to your HTML file head section first: -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -77,6 +80,7 @@
             <nav>
                 <a href="#about">About</a>
                 <a href="#skills">Skills</a>
+                <a href="#competitive">Competitive-Programming</a>
                 <a href="#education">Education</a>
                 <a href="#projects">Projects</a>
             </nav>
@@ -197,6 +201,129 @@
                     </div>
                 </div>
             </section>
+            
+            <!-- ===== Competitive Programming Section ===== -->
+            <section id="competitive" class="main-content-containers">
+                <h2>Competitive Programming</h2>
+                <div class="competitive-dashboard">
+                    <div class="platform-cards">
+                        <!-- LeetCode -->
+                        <div class="platform-card leetcode">
+                            <div class="platform-header">
+                                <img src="images/icons/platforms/leetcode.svg" alt="LeetCode">
+                                <h3>LeetCode</h3>
+                                <a href="https://leetcode.com/u/hello_to_shiva/" target="_blank" class="profile-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="stats">
+                                <div class="stat-item">
+                                    <span class="label">Problems Solved</span>
+                                    <span class="leetcode problems-solved">Loading...</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="label">Global Ranking</span>
+                                    <span class="leetcode ranking">Loading...</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="label">Acceptance Rate</span>
+                                    <span class="leetcode acceptance-rate">Loading...</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="leetcode progress" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <!-- GFG -->
+                        <div class="platform-card gfg">
+                            <div class="platform-header">
+                                <img src="images/icons/platforms/gfg.svg" alt="GeeksforGeeks">
+                                <h3>GeeksforGeeks</h3>
+                                <a href="https://auth.geeksforgeeks.org/user/tomarsh3rre/" target="_blank" class="profile-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="stats">
+                                <div class="stat-item">
+                                    <span class="label">Problems Solved</span>
+                                    <span class="value problems-solved">Loading...</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="label">Coding Score</span>
+                                    <span class="value coding-score">Loading...</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="label">Institute Rank</span>
+                                    <span class="value institute-rank">Loading...</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Interview Bit -->
+                        <div class="platform-card gfg">
+                            <div class="platform-header">
+                                <img src="images/icons/platforms/interviewbit.svg" alt="interviewbit">
+                                <h3><b>Interview</b> Bit</h3>
+                                <a href="https://www.interviewbit.com/profile/shiva-tomar_421/" target="_blank" class="profile-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="stats">
+                                <div class="stat-item">
+                                    <span class="label">Problems Solved</span>
+                                    <span class="value problems-solved">Loading...</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="label">Coding Score</span>
+                                    <span class="value coding-score">Loading...</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="label">Institute Rank</span>
+                                    <span class="value institute-rank">Loading...</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- hacker Rank -->
+                        <div class="platform-card gfg">
+                            <div class="platform-header">
+                                <img src="images/icons/platforms/hackerrank.svg" alt="hackerrank">
+                                <h3>HackerRank</h3>
+                                <a href="https://www.hackerrank.com/profile/tomarshiva403" target="_blank" class="profile-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                            <div class="stats">
+                                <div class="stat-item">
+                                    <span class="label">Problems Solved</span>
+                                    <span class="value problems-solved">Loading...</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="label">Coding Score</span>
+                                    <span class="value coding-score">Loading...</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="label">Institute Rank</span>
+                                    <span class="value institute-rank">Loading...</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Progress Graph -->
+                    <div class="progress-graph">
+                        <canvas id="problemSolvingGraph"></canvas>
+                    </div>
+                </div>
+            </section>
 
             <!-- ===== Education Section ===== -->
             <section id="education" class="main-content-containers">
@@ -288,7 +415,8 @@
     </div>
 
     <!-- ===== Custom Script ===== -->
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/cp-stats.js"></script>
 </body>
 
 </html>
