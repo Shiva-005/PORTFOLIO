@@ -1,7 +1,7 @@
 class CPStats {
     constructor() {
         this.leetcodeUsername = 'hello_to_shiva';
-        this.gfgUsername = 'tomarsh3rre/';
+        this.gfgUsername = 'tomarsh3rre';
         this.hackerrankUsername = 'tomarshiva403';
     }
 
@@ -17,7 +17,7 @@ class CPStats {
 
     async getGFGStats() {
         try {
-            const response = await fetch(`https://geeksforgeeks-api.vercel.app/${this.gfgUsername}`);
+            const response = await fetch(`http://localhost:8000/gfg/${this.gfgUsername}`);
             return await response.json();
         } catch (error) {
             console.error('Error fetching GFG stats:', error);
@@ -25,20 +25,9 @@ class CPStats {
         }
     }
 
-    async getHackerRankStats() {
-        try {
-            const response = await fetch(`https://hackerrank-api.vercel.app/${this.hackerrankUsername}`);
-            return await response.json();
-        } catch (error) {
-            console.error('Error fetching HackerRank stats:', error);
-            return null;
-        }
-    }
-
     async updateDashboard() {
         const leetcodeStats = await this.getLeetCodeStats();
         const gfgStats = await this.getGFGStats();
-        const hackerrankStats = await this.getHackerRankStats();
 
         // Update LeetCode stats
         if (leetcodeStats) {
@@ -50,19 +39,14 @@ class CPStats {
 
         // Update GFG stats
         if (gfgStats) {
-            document.querySelector('.gfg .problems-solved').textContent = gfgStats.totalProblemsSolved;
-            document.querySelector('.gfg .coding-score').textContent = gfgStats.codingScore;
-            document.querySelector('.gfg .institute-rank').textContent = gfgStats.instituteRank;
-            document.querySelector('.gfg .progress').style.width = `${gfgStats.codingScore / 1000 * 100}%`;
+            document.querySelector('.gfg .problems-solved').textContent = gfgStats.data.total_problems_solved;
+            document.querySelector('.gfg .coding-score').textContent = gfgStats.data.score;
+            document.querySelector('.gfg .institute-rank').textContent = gfgStats.data.institute_rank;
+            document.querySelector('.gfg .progress').style.width = `${gfgStats.data.score / 1000 * 100}%`;
         }
 
         // Update HackerRank stats
-        if (gfgStats) {
-            document.querySelector('.gfg .problems-solved').textContent = gfgStats.totalProblemsSolved;
-            document.querySelector('.gfg .coding-score').textContent = gfgStats.codingScore;
-            document.querySelector('.gfg .institute-rank').textContent = gfgStats.instituteRank;
-            document.querySelector('.gfg .progress').style.width = `${gfgStats.codingScore / 1000 * 100}%`;
-        }
+        
 
         // Update monthly solving graph
         this.updateSolvingGraph();
