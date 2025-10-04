@@ -1,22 +1,29 @@
 const express = require('express');
-const axios = require('axios');
 const cors = require('cors');
-const puppeteer = require('puppeteer');
+
+require('dotenv').config();
+
+const connectToDatabase = require('./connection');
+
+const contactRoutes = require('./routes/contactRoutes');
+const gfgRoutes = require('./routes/gfgRoutes');
+const hackerrankRoutes = require('./routes/hackerrankRoutes');
 
 const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Middleware
 app.use(cors());
+app.use(express.json());
 
-app.get('/gfg/:username', async (req, res) => {
-    try {
-        const { username } = req.params;
-        const response = await axios.get(
-            `https://authapi.geeksforgeeks.org/api-get/user-profile-info/?handle=${username}`
-        );
-        res.json(response.data);
-    } catch (err) {
-        res.status(500).json({ error: 'Failed to fetch' });
-    }
-});
+// Connect to MongoDB
+const mongoDbUrl = process.env.mongoDbUrl;
+connectToDatabase(mongoDbUrl);
 
+// Routes
+app.use('/contact', contactRoutes);       // POST /contact/contactme
+app.use('/gfg', gfgRoutes);               // GET /gfg/:username
+app.use('/hackerrank', hackerrankRoutes); // GET /hackerrank/:username
 
-app.listen(8000, () => console.log('Server running on port 8000'));
+// Start Server
+app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
