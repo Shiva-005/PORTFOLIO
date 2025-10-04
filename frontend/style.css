@@ -281,7 +281,10 @@ nav a:hover::after {
 
 #about,
 #skills,
-#education {
+#education,
+#competitive,
+#projects,
+#contactMe {
     border-bottom: 1px solid grey;
 }
 
@@ -673,6 +676,24 @@ nav a:hover::after {
     color: #eb9412;
 }
 
+.project-bottom-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project-bottom-container .versal-project-link {
+    display: flex;
+    align-items: center;
+    color: var(--color-taupe);
+    transition: color 0.3s ease;
+}
+
+.project-links{
+    display: flex;
+    gap: 20px;
+}
+
 /* -------------------------
    Small, safe improvements
    ------------------------- */
@@ -680,6 +701,73 @@ nav a:hover::after {
 .project-container-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+}
+
+.project-bottom-container .versal-project-link:hover {
+    color: #eb9412;
+    text-decoration: underline;
+}
+
+form {
+    border-radius: 10px;
+    padding: 15px;
+    background-color: var(--color-dark);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+form input{
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: var(--color-gray);
+    color: #f5f5f5;
+}
+
+form input:focus {
+    outline: none;
+    border-color: var(--color-taupe);
+    box-shadow: 0 0 5px rgba(235, 148, 18, 0.5);
+}
+
+form textarea {
+    padding: 10px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: var(--color-gray);
+    color: #f5f5f5;
+    resize: vertical;
+    min-height: 100px;
+}
+
+form textarea:focus {
+    outline: none;
+    border-color: var(--color-taupe);
+    box-shadow: 0 0 5px rgba(235, 148, 18, 0.5);
+}
+
+form button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--color-taupe);
+    color: var(--color-dark);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #eb9412;
+}
+
+#Copyrights {
+    text-align: center;
+    color: var(--color-beige);
+    margin: 20px 0;
+    font-size: 0.9rem;
 }
 
 /* Tablet / narrower desktops */

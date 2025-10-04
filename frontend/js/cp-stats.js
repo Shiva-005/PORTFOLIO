@@ -25,9 +25,20 @@ class CPStats {
         }
     }
 
+    async getHackerRankStats() {
+        try {
+            const response = await fetch(`http://localhost:8000/hackerrank/${this.hackerrankUsername}`);
+            return await response.json();
+        } catch (error) {
+            console.error('Error fetching HackerRank stats:', error);
+            return null;
+        }
+    }
+
     async updateDashboard() {
         const leetcodeStats = await this.getLeetCodeStats();
         const gfgStats = await this.getGFGStats();
+        const hackerrankStats = await this.getHackerRankStats();
 
         // Update LeetCode stats
         if (leetcodeStats) {
@@ -46,7 +57,15 @@ class CPStats {
         }
 
         // Update HackerRank stats
-        
+        if (hackerrankStats) {
+            // You need to inspect the JSON structure from hackerrank-badges.vercel.app
+            // Example placeholders:
+            if (hackerrankStats) {
+                document.querySelector('.hackerrank .problems-solved').textContent = hackerrankStats.problemsSolved || 'N/A';
+                document.querySelector('.hackerrank .rank').textContent = hackerrankStats.rank || 'N/A';
+                document.querySelector('.hackerrank .stars').textContent = hackerrankStats.stars || '0';
+            }
+        }
 
         // Update monthly solving graph
         this.updateSolvingGraph();
@@ -82,24 +101,15 @@ class CPStats {
                 scales: {
                     y: {
                         beginAtZero: true,
-                        grid: {
-                            color: 'rgba(255, 255, 255, 0.1)'
-                        },
-                        ticks: {
-                            color: '#aaa8a6'
-                        }
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                        ticks: { color: '#aaa8a6' }
                     },
                     x: {
-                        grid: {
-                            color: 'rgba(255, 255, 255, 0.1)'
-                        },
-                        ticks: {
-                            color: '#aaa8a6'
-                        }
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                        ticks: { color: '#aaa8a6' }
                     }
                 }
             }
         });
     }
 }
-

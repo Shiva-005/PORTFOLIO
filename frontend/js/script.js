@@ -15,16 +15,23 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // ---------- FIXED SCROLL HIGHLIGHT ----------
     window.addEventListener("scroll", () => {
-        let currentSection = "";
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 80;
-            const sectionHeight = section.clientHeight;
+        let currentSection = sections[0].getAttribute("id"); // default to first
 
-            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 80; // offset to account for nav
+            if (scrollY >= sectionTop) {
                 currentSection = section.getAttribute("id");
             }
         });
+
+        // Special fix for the last section
+        const scrollBottom = window.scrollY + window.innerHeight;
+        const pageHeight = document.documentElement.scrollHeight;
+        if (scrollBottom >= pageHeight - 5) { // near bottom
+            currentSection = sections[sections.length - 1].getAttribute("id");
+        }
 
         navLinks.forEach(link => {
             link.classList.remove("active");
@@ -34,17 +41,49 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    const form = document.getElementById("contact-form");
+    const responseMsg = document.getElementById("responseMsg");
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault(); // Prevent page reload
+
+        const data = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            message: document.getElementById("message").value
+        };
+
+        try {
+            const response = await fetch("http://localhost:8000/contact/contactme", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+
+            responseMsg.innerText = result.message;
+            responseMsg.style.color = "#eb9412";
+
+            // Clear form fields
+            form.reset();
+
+        } catch (err) {
+            console.error(err);
+            responseMsg.innerText = "Error sending message.";
+            responseMsg.style.color = "red";
+        }
+    });
+
     const profileImg = document.getElementById("profile-img");
     const modal = document.getElementById("image-modal");
     const modalImg = document.getElementById("modal-img");
     const closeBtn = document.querySelector(".close-btn");
 
-
     profileImg.addEventListener("click", () => {
         modal.style.display = "block";
         modalImg.src = profileImg.src;
     });
-
 
     closeBtn.addEventListener("click", () => {
         modal.style.display = "none";
@@ -64,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
             datasets: [{
                 label: 'Problems Solved',
-                data: [20, 15, 45, 60, 29, 10, 20, 45, 40, 50, 20, 30], // I need to provide all the data of gfg,leetcode,interviewbit,hackerrank
+                data: [20, 15, 45, 60, 29, 10, 20, 45, 40, 50, 20, 30], // Replace with actual CP data
                 borderColor: '#eb9412',
                 backgroundColor: 'rgba(235, 148, 18, 0.1)',
                 fill: true,
@@ -84,20 +123,12 @@ document.addEventListener("DOMContentLoaded", () => {
             scales: {
                 y: {
                     beginAtZero: true,
-                    grid: {
-                        color: 'rgba(255, 255, 255, 0.1)'
-                    },
-                    ticks: {
-                        color: '#aaa8a6'
-                    }
+                    grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                    ticks: { color: '#aaa8a6' }
                 },
                 x: {
-                    grid: {
-                        color: 'rgba(255, 255, 255, 0.1)'
-                    },
-                    ticks: {
-                        color: '#aaa8a6'
-                    }
+                    grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                    ticks: { color: '#aaa8a6' }
                 }
             }
         }
