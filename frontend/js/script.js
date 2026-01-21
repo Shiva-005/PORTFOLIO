@@ -75,64 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    const profileImg = document.getElementById("profile-img");
-    const modal = document.getElementById("image-modal");
-    const modalImg = document.getElementById("modal-img");
-    const closeBtn = document.querySelector(".close-btn");
-
-    profileImg.addEventListener("click", () => {
-        modal.style.display = "block";
-        modalImg.src = profileImg.src;
-    });
-
-    closeBtn.addEventListener("click", () => {
-        modal.style.display = "none";
-    });
-
-    window.addEventListener("click", (e) => {
-        if (e.target === modal) {
-            modal.style.display = "none";
-        }
-    });
-
-    const ctx = document.getElementById('problemSolvingGraph').getContext('2d');
-
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-            datasets: [{
-                label: 'Problems Solved',
-                data: [20, 15, 45, 60, 29, 10, 20, 45, 40, 50, 20, 30], // Replace with actual CP data
-                borderColor: '#eb9412',
-                backgroundColor: 'rgba(235, 148, 18, 0.1)',
-                fill: true,
-                tension: 0.4
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    labels: {
-                        color: '#aaa8a6'
-                    }
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    grid: { color: 'rgba(255, 255, 255, 0.1)' },
-                    ticks: { color: '#aaa8a6' }
-                },
-                x: {
-                    grid: { color: 'rgba(255, 255, 255, 0.1)' },
-                    ticks: { color: '#aaa8a6' }
-                }
-            }
-        }
-    });
 
     const cpStats = new CPStats();
     cpStats.updateDashboard();

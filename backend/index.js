@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-
 require('dotenv').config();
 
 const connectToDatabase = require('./connection');
@@ -12,13 +11,13 @@ const hackerrankRoutes = require('./routes/hackerrankRoutes');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+
 // Middleware
 app.use(cors());
 app.use(express.json());
 
 // Connect to MongoDB
-const mongoDbUrl = process.env.mongoDbUrl;
-connectToDatabase(mongoDbUrl);
+connectToDatabase();
 
 // Routes
 app.use('/contact', contactRoutes);       // POST /contact/contactme

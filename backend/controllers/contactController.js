@@ -1,6 +1,7 @@
 const ContactForm = require('../models/contactform.js');
 const fs = require('fs').promises; // Use promises for async/await
 const path = require('path');
+const sendEmail = require('../nodemailer.js');
 
 exports.submitContactForm = async (req, res) => {
     try {
@@ -8,6 +9,15 @@ exports.submitContactForm = async (req, res) => {
 
         if (!name || !email || !message) {
             return res.status(400).json({ error: "All fields are required" });
+        }
+
+        // Send email notification
+        try {
+            await sendEmail(name, email, message);
+            console.log("✅ Email sent successfully");
+        } catch (emailErr) {
+            console.error("❌ Error sending email:", emailErr);
+            // Optionally, you can return here if email sending is critical
         }
 
         // Prepare the text entry to save to contact.txt

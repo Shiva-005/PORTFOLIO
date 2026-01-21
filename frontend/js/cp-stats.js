@@ -2,7 +2,6 @@ class CPStats {
     constructor() {
         this.leetcodeUsername = 'hello_to_shiva';
         this.gfgUsername = 'tomarsh3rre';
-        this.hackerrankUsername = 'tomarshiva403';
     }
 
     async getLeetCodeStats() {
@@ -25,20 +24,9 @@ class CPStats {
         }
     }
 
-    async getHackerRankStats() {
-        try {
-            const response = await fetch(`http://localhost:8000/hackerrank/${this.hackerrankUsername}`);
-            return await response.json();
-        } catch (error) {
-            console.error('Error fetching HackerRank stats:', error);
-            return null;
-        }
-    }
-
     async updateDashboard() {
         const leetcodeStats = await this.getLeetCodeStats();
         const gfgStats = await this.getGFGStats();
-        const hackerrankStats = await this.getHackerRankStats();
 
         // Update LeetCode stats
         if (leetcodeStats) {
@@ -55,61 +43,7 @@ class CPStats {
             document.querySelector('.gfg .institute-rank').textContent = gfgStats.data.institute_rank;
             document.querySelector('.gfg .progress').style.width = `${gfgStats.data.score / 1000 * 100}%`;
         }
-
-        // Update HackerRank stats
-        if (hackerrankStats) {
-            // You need to inspect the JSON structure from hackerrank-badges.vercel.app
-            // Example placeholders:
-            if (hackerrankStats) {
-                document.querySelector('.hackerrank .problems-solved').textContent = hackerrankStats.problemsSolved || 'N/A';
-                document.querySelector('.hackerrank .rank').textContent = hackerrankStats.rank || 'N/A';
-                document.querySelector('.hackerrank .stars').textContent = hackerrankStats.stars || '0';
-            }
-        }
-
-        // Update monthly solving graph
-        this.updateSolvingGraph();
-    }
-
-    async updateSolvingGraph() {
-        const ctx = document.getElementById('problemSolvingGraph').getContext('2d');
-        const data = await this.getMonthlySolvingData();
-
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: data.labels,
-                datasets: [{
-                    label: 'Problems Solved',
-                    data: data.values,
-                    borderColor: '#eb9412',
-                    backgroundColor: 'rgba(235, 148, 18, 0.1)',
-                    fill: true,
-                    tension: 0.4
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        labels: {
-                            color: '#aaa8a6'
-                        }
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: { color: 'rgba(255, 255, 255, 0.1)' },
-                        ticks: { color: '#aaa8a6' }
-                    },
-                    x: {
-                        grid: { color: 'rgba(255, 255, 255, 0.1)' },
-                        ticks: { color: '#aaa8a6' }
-                    }
-                }
-            }
-        });
+        
     }
 }
+
