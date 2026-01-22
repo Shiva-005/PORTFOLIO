@@ -1,6 +1,3 @@
-const ContactForm = require('../models/contactform.js');
-const fs = require('fs').promises; // Use promises for async/await
-const path = require('path');
 const sendEmail = require('../nodemailer.js');
 
 exports.submitContactForm = async (req, res) => {
@@ -17,33 +14,12 @@ exports.submitContactForm = async (req, res) => {
             console.log("✅ Email sent successfully");
         } catch (emailErr) {
             console.error("❌ Error sending email:", emailErr);
-            // Optionally, you can return here if email sending is critical
         }
-
-        // Prepare the text entry to save to contact.txt
-        const entry = `Name: ${name}\nEmail: ${email}\nMessage: ${message}\n---\n`;
-
-        // Define the file path safely
-        const filePath = path.join(__dirname, "../contact.txt");
-
-        // Append the entry to contact.txt
-        try {
-            await fs.appendFile(filePath, entry);
-            console.log("✅ Contact saved to contact.txt");
-        } catch (fileErr) {
-            console.error("❌ Error writing to file:", fileErr);
-            // Optionally, you can return here if file saving is critical
-        }
-
-        // Save to MongoDB
-        const savedContact = await ContactForm.create({ name, email, message });
-        console.log("✅ Contact saved to MongoDB:", savedContact);
 
         // Send success response
-        res.json({ message: "Form submitted and saved successfully!" });
+        res.json({ message: "Form submitted successfully!" });
 
     } catch (err) {
-        console.error("❌ Error saving contact:", err);
-        res.status(500).json({ error: "Failed to save contact" });
+        res.status(500).json({ error: "Failed to sendEmail to this contact" });
     }
 };
