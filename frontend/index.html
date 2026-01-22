@@ -5,22 +5,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio | Home</title>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <link rel="icon" href="images/icons/fevicon/icon.png" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet" />
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.0/devicon.min.css">
-
-    <link rel="stylesheet" href="style.css" />
     
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.0/devicon.min.css">
+    
+    <link rel="icon" href="images/icons/fevicon/icon.png" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
@@ -62,7 +53,7 @@
                 </div>
             </div>
 
-            <!-- Social Links -->
+            <!-- Social media Links -->
             <div class="social-media-container">
                 <a href="https://www.instagram.com/_ur_shiva005/" target="_blank"><img
                         src="images/icons/socialicons/instagram.png" alt="instagram-profile" /></a>
@@ -338,6 +329,8 @@
                                 <div>HTML</div>
                                 <div>CSS</div>
                                 <div>JS</div>
+                                <div>Express JS</div>
+                                <div>Nodemailer</div>
                             </div>
 
                             <!-- Overlay Links -->
@@ -428,76 +421,8 @@
         </main>
     </div>
 
-    <!-- ===== Custom Script ===== -->
-     <script>
-        const canvas = document.getElementById('animationCanvas');
-            const ctx = canvas.getContext('2d');
-            canvas.width = 1920;
-            canvas.height = 1080;
-
-            // Animation variables
-            let particles = [];
-
-            class Particle {
-                constructor(x, y, size, color, velocity) {
-                    this.x = x;
-                    this.y = y;
-                    this.size = size;
-                    this.color = color;
-                    this.velocity = velocity;
-                }
-
-                draw() {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fillStyle = this.color;
-                    ctx.fill();
-                }
-
-                update() {
-                    this.x += this.velocity.x;
-                    this.y += this.velocity.y;
-
-                    // Bounce off edges
-                    if (this.x + this.size > canvas.width || this.x - this.size < 0) {
-                        this.velocity.x *= -1;
-                    }
-                    if (this.y + this.size > canvas.height || this.y - this.size < 0) {
-                        this.velocity.y *= -1;
-                    }
-
-                    this.draw();
-                }
-            }
-
-            function initParticles(count) {
-                particles = [];
-                for (let i = 0; i < count; i++) {
-                    const size = Math.random() * 5 + 2;
-                    const x = Math.random() * (canvas.width - size * 2) + size;
-                    const y = Math.random() * (canvas.height - size * 2) + size;
-                    const color = `hsl(${Math.random() * 360}, 70%, 50%)`;
-                    const velocity = {
-                        x: (Math.random() - 0.5) * 2,
-                        y: (Math.random() - 0.5) * 2,
-                    };
-                    particles.push(new Particle(x, y, size, color, velocity));
-                }
-            }
-
-            function animate() {
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-                particles.forEach((particle) => particle.update());
-
-                requestAnimationFrame(animate);
-            }
-
-            // Initialize particles and start animation
-            initParticles(100);
-            animate();
-     </script>
+    
+    <script src="js/animationBgScript.js"></script>
     <script src="js/script.js"></script>
     <script src="js/cp-stats.js"></script>
 </body>
