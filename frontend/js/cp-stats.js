@@ -16,13 +16,14 @@ class CPStats {
 
     async getGFGStats() {
         try {
-            const response = await fetch(`http://localhost:8000/gfg/${this.gfgUsername}`);
+            const response = await fetch(`/gfg/${this.gfgUsername}`);
             return await response.json();
         } catch (error) {
             console.error('Error fetching GFG stats:', error);
             return null;
         }
     }
+
 
     async updateDashboard() {
         const leetcodeStats = await this.getLeetCodeStats();
