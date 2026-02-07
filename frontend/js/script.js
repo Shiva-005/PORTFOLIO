@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Making hyperLinks
+    // ---------- Smooth Scroll ----------
     const navLinks = document.querySelectorAll("nav a");
     const sections = document.querySelectorAll("section");
 
@@ -15,22 +15,22 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // ---------- FIXED SCROLL HIGHLIGHT ----------
+    // ---------- Scroll Highlight ----------
     window.addEventListener("scroll", () => {
-        let currentSection = sections[0].getAttribute("id"); // default to first
+        let currentSection = sections[0]?.id;
 
         sections.forEach(section => {
-            const sectionTop = section.offsetTop - 80; // offset to account for nav
-            if (scrollY >= sectionTop) {
-                currentSection = section.getAttribute("id");
+            const sectionTop = section.offsetTop - 80;
+            if (window.scrollY >= sectionTop) {
+                currentSection = section.id;
             }
         });
 
-        // Special fix for the last section
+        // Fix for last section
         const scrollBottom = window.scrollY + window.innerHeight;
         const pageHeight = document.documentElement.scrollHeight;
-        if (scrollBottom >= pageHeight - 5) { // near bottom
-            currentSection = sections[sections.length - 1].getAttribute("id");
+        if (scrollBottom >= pageHeight - 5) {
+            currentSection = sections[sections.length - 1]?.id;
         }
 
         navLinks.forEach(link => {
@@ -41,44 +41,47 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // ---------- Contact Form ----------
     const form = document.getElementById("contact-form");
     const responseMsg = document.getElementById("responseMsg");
 
-    form.addEventListener("submit", async (e) => {
-        e.preventDefault(); // Prevent page reload
+    if (form) {
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
 
-        const data = {
-            name: document.getElementById("name").value,
-            email: document.getElementById("email").value,
-            message: document.getElementById("message").value
-        };
+            const data = {
+                name: document.getElementById("name")?.value,
+                email: document.getElementById("email")?.value,
+                message: document.getElementById("message")?.value
+            };
 
-        try {
-            const response = await fetch("http://localhost:8000/contact/contactme", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data)
-            });
+            try {
+                const response = await fetch("/contact/contactme", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                });
 
-            const result = await response.json();
+                const result = await response.json();
 
-            responseMsg.innerText = result.message;
-            responseMsg.style.color = "#eb9412";
+                responseMsg.innerText = result.message || "Message sent!";
+                responseMsg.style.color = "#eb9412";
 
-            // Clear form fields
-            form.reset();
+                form.reset();
+            } catch (err) {
+                console.error(err);
+                responseMsg.innerText = "Error sending message.";
+                responseMsg.style.color = "red";
+            }
+        });
+    }
 
-        } catch (err) {
-            console.error(err);
-            responseMsg.innerText = "Error sending message.";
-            responseMsg.style.color = "red";
-        }
-    });
+    // ---------- CP Stats ----------
+    if (typeof CPStats !== "undefined") {
+        const cpStats = new CPStats();
+        cpStats.updateDashboard();
 
-
-    const cpStats = new CPStats();
-    cpStats.updateDashboard();
-
-    // Update stats every 30 minutes
-    setInterval(() => cpStats.updateDashboard(), 1800000);
+        // Refresh every 30 minutes
+        setInterval(() => cpStats.updateDashboard(), 1800000);
+    }
 });
