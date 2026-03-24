@@ -23,6 +23,7 @@ app.use('/api/gfg', gfgRoutes);
 
 app.use(express.static(path.join(__dirname, '../frontend')));
 
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 app.use(notFound);
 app.use(errorHandler);

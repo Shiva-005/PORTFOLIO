@@ -1,4 +1,10 @@
-const BASE_URL = "http://localhost:8000/api";
+// CPStats.js
+
+// ✅ Dynamically set BASE_URL for local and production
+const BASE_URL =
+    window.location.hostname === "localhost"
+        ? "http://localhost:8000/api" // local backend
+        : "/api";                     // production backend (same domain)
 
 export default class CPStats {
     constructor() {
@@ -92,19 +98,19 @@ export default class CPStats {
         if (!stats) return;
 
         stats.innerHTML = `
-            <div class="stat-item">
-                <span class="label">Username</span>
-                <span style="font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--cyan)">
-                    ${username}
-                </span>
-            </div>
-            <div class="stat-item">
-                <span class="label">Profile</span>
-                <span style="color:#00e564;font-size:0.8rem">
-                    ● Active
-                </span>
-            </div>
-        `;
+      <div class="stat-item">
+        <span class="label">Username</span>
+        <span style="font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--cyan)">
+          ${username}
+        </span>
+      </div>
+      <div class="stat-item">
+        <span class="label">Profile</span>
+        <span style="color:#00e564;font-size:0.8rem">
+          ● Active
+        </span>
+      </div>
+    `;
 
         if (progressWrap) {
             progressWrap.style.opacity = "0.3";
