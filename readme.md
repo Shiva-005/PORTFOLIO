@@ -138,14 +138,6 @@ Simply open `frontend/index.html` in your browser or serve it using a live serve
 
 ---
 
-## 🌍 Deployment Notes
-
-* Frontend can be deployed on platforms like **Netlify**, **Vercel**, or **GitHub Pages**
-* Backend can be deployed on **Render**, **Railway**, or **Cyclic**
-* APIs are decoupled, allowing seamless future updates
-
----
-
 ## 🔮 Future Enhancements
 
 * Dark / Light theme toggle
