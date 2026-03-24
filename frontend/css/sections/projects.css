@@ -1,0 +1,193 @@
+ #projects {
+     max-width: 1200px;
+     margin: 0 auto;
+ }
+
+ .projects-container {
+     display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+     gap: 24px;
+ }
+
+ .project-container-card {
+     position: relative;
+     background: var(--surface);
+     border: 1px solid var(--border);
+     border-radius: 20px;
+     overflow: hidden;
+     transition: border-color 0.4s, transform 0.4s, box-shadow 0.4s;
+     display: flex;
+     flex-direction: column;
+     /* group: true; */
+ }
+
+ .project-container-card:hover {
+     border-color: var(--border-h);
+     transform: translateY(-8px);
+     box-shadow: 0 24px 80px rgba(0, 229, 255, 0.12);
+ }
+
+ .project-img-wrap {
+     position: relative;
+     overflow: hidden;
+     height: 200px;
+     background: linear-gradient(135deg, var(--bg3), var(--bg2));
+ }
+
+ .project-img-wrap img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s;
+ }
+
+ .project-container-card:hover .project-img-wrap img {
+     transform: scale(1.08);
+     filter: brightness(0.6);
+ }
+
+ .project-img-placeholder {
+     width: 100%;
+     height: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     font-size: 3rem;
+     color: var(--border-h);
+     transition: transform 0.6s ease, color 0.4s;
+ }
+
+ .project-container-card:hover .project-img-placeholder {
+     transform: scale(1.1);
+     color: var(--cyan);
+ }
+
+ .project-overlay {
+     position: absolute;
+     inset: 0;
+     background: rgba(5, 5, 8, 0.6);
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     gap: 12px;
+     opacity: 0;
+     transform: translateY(10px);
+     transition: opacity 0.4s, transform 0.4s;
+ }
+
+ .project-container-card:hover .project-overlay {
+     opacity: 1;
+     transform: none;
+ }
+
+ .overlay-btn {
+     display: inline-flex;
+     align-items: center;
+     gap: 7px;
+     padding: 9px 18px;
+     border-radius: 8px;
+     font-size: 0.78rem;
+     font-weight: 600;
+     letter-spacing: 0.05em;
+     text-decoration: none;
+     transition: transform 0.2s;
+ }
+
+ .overlay-btn:hover {
+     transform: scale(1.06);
+ }
+
+ .overlay-btn-primary {
+     background: var(--cyan);
+     color: var(--bg);
+ }
+
+ .overlay-btn-secondary {
+     background: rgba(255, 255, 255, 0.12);
+     backdrop-filter: blur(8px);
+     color: var(--text);
+     border: 1px solid rgba(255, 255, 255, 0.15);
+ }
+
+ .project-body {
+     padding: 24px;
+     flex: 1;
+     display: flex;
+     flex-direction: column;
+ }
+
+ .project-body h4 {
+     font-size: 1.05rem;
+     font-weight: 700;
+     color: var(--text);
+     margin-bottom: 8px;
+ }
+
+ .project-body>p {
+     font-size: 0.82rem;
+     line-height: 1.7;
+     color: var(--text-2);
+     flex: 1;
+     margin-bottom: 16px;
+ }
+
+ .project-body>p strong {
+     color: var(--text);
+ }
+
+ .tech-used {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 7px;
+     margin-bottom: 16px;
+ }
+
+ .tech-used div {
+     font-size: 0.62rem;
+     font-weight: 500;
+     letter-spacing: 0.07em;
+     padding: 4px 10px;
+     border-radius: 100px;
+     border: 1px solid var(--border);
+     color: var(--cyan);
+     background: var(--cyan-dim);
+     transition: all 0.2s;
+ }
+
+ .tech-used div:hover {
+     border-color: var(--border-h);
+ }
+
+ .project-links {
+     display: flex;
+     gap: 10px;
+ }
+
+ .project-links a {
+     display: inline-flex;
+     align-items: center;
+     gap: 6px;
+     font-size: 0.75rem;
+     font-weight: 500;
+     color: var(--text-2);
+     border: 1px solid var(--border);
+     padding: 7px 14px;
+     border-radius: 8px;
+     text-decoration: none;
+     transition: all 0.2s;
+ }
+
+ .project-links a:hover {
+     color: var(--cyan);
+     border-color: var(--border-h);
+     background: var(--cyan-dim);
+ }
+
+ .project-links a img {
+     filter: invert(1) opacity(0.5);
+     transition: opacity 0.2s;
+ }
+
+ .project-links a:hover img {
+     opacity: 1;
+ }

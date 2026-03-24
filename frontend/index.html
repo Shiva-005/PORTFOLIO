@@ -4,427 +4,65 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio | Home</title>
 
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.0/devicon.min.css">
+    <title>Shiva Singh Tomar | Full Stack Developer</title>
+    <meta name="description"
+        content="Shiva Singh Tomar - Full Stack Developer skilled in React, Node.js, MongoDB. Explore projects, skills, and contact details.">
+    <meta name="keywords"
+        content="Shiva Tomar, Full Stack Developer, React Developer, Node.js Developer, Portfolio, MITS Gwalior">
+    <meta name="author" content="Shiva Singh Tomar">
+
+    <link rel="icon" href="./assets/images/icons/favicon/icon.png" />
+
     
-    <link rel="icon" href="images/icons/fevicon/icon.png" />
-    <link rel="stylesheet" href="style.css" />
+    <!-- <link rel="preload" href="./style.css" as="style"> -->
+    <!-- <link rel="preload" href="./js/main.js" as="script"> -->
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Mono&display=swap"
+        rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.0/devicon.min.css">
+
+   
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
-    <canvas id="animationCanvas"></canvas>
-    <div class="main-container">
-        <!-- ================= Sidebar ================= -->
-        <aside class="sidebar">
 
-            <!-- Profile Section -->
-            <div class="profile-container">
-                <!-- Profile Image -->
-                <div class="profile-image-container">
-                    <img id="profile-img" src="images/profile/profile.jpg" alt="profile-photo" />
-                </div>
+    <!-- ===== Global UI Elements ===== -->
+    <div id="cursor"></div>
+    <div id="cursor-follower"></div>
+    <div id="scroll-progress"></div>
 
-                <div class="profile-name">
-                    <h3 class="textfocus">Shiva Singh Tomar</h3>
-                    <p class="typed-text">Full Stack Developer</p>
-                </div>
-            </div>
+    <div id="toast"></div>
 
-            <!-- Contact Section -->
-            <div class="contact-container">
-                <div class="email">
-                    <div class="label">Email</div>
-                    <div class="value">
-                        <a href="mailto:tomarshiva403@gmail.com">tomarshiva403@gmail.com</a>
-                    </div>
-                </div>
-                <div class="mob-number">
-                    <div class="label">Phone No.</div>
-                    <div class="value">
-                        <a href="del: +91 9691047116">+91 9691047116</a>
-                    </div>
-                </div>
-                <div class="location">
-                    <div class="label">Location</div>
-                    <div class="value">Gwalior, Madhya Pradesh</div>
-                </div>
-            </div>
+    <!-- ===== Dynamic Components ===== -->
+    <div id="navbar-container"></div>
+    <div id="hero-container"></div>
+    <div id="about-container"></div>
+    <div id="skills-container"></div>
+    <div id="competitive-container"></div>
+    <div id="education-container"></div>
+    <div id="projects-container"></div>
+    <div id="contact-container"></div>
+    <div id="footer-container"></div>
 
-            <!-- Social media Links -->
-            <div class="social-media-container">
-                <a href="https://www.instagram.com/_ur_shiva005/" target="_blank"><img
-                        src="images/icons/socialicons/instagram.png" alt="instagram-profile" /></a>
-                <a href="https://github.com/Shiva-005/" target="_blank"><img src="images/icons/socialicons/317712_code repository_github_repository_resource_icon.svg"
-                        alt="github-profile" /></a>
-                <a href="https://www.linkedin.com/in/shiva-singh-tomar-285267207/" target="_blank"><img
-                        src="images/icons/socialicons/linkedin.png" alt="linkedin-profile" /></a>
-            </div>
-        </aside>
+    <!-- ===== Back to Top ===== -->
+    <a href="#hero" id="back-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
 
-        <!-- ================= Main Section ================= -->
-        <main class="main-section">
+    <!-- ===== Scripts ===== -->
+    <script type="module" src="./js/main.js"></script>
 
-            <!-- ===== Navigation ===== -->
-            <nav>
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#competitive">Competitive-Programming</a>
-                <a href="#education">Education</a>
-                <a href="#projects">Projects</a>
-                <a href="#contactMe">Contact Me</a>
-            </nav>
-
-            <!-- ===== About Section ===== -->
-            <section id="about" class="main-content-containers">
-                <h2>About Me</h2>
-                <p>
-                    I am a <strong>B.Tech student</strong> currently
-                    in my <strong>3<sup>rd</sup> year</strong> at <strong>Madhav Institute of Technology and
-                        Science</strong>, pursuing
-                    a degree in <strong>Computer Science and Engineering</strong>
-                    with a strong foundation in programming, problem-solving, and emerging
-                    technologies, I am continuously working to enhance my skills and apply
-                    them to real-world projects.
-                </p>
-                <p>
-                    My areas of interest include <strong>web development, software engineering,
-                        and data structures & algorithms</strong>. I enjoy building efficient,
-                    user-friendly applications and have experience with technologies such as
-                    <strong>HTML, CSS, JavaScript, Node JS,Express JS MongoDB, C++, and Python</strong>.
-                </p>
-                <p>
-                    Beyond academics, I actively participate in hackathons, collaborative
-                    projects, and coding challenges, which help me develop teamwork,
-                    leadership, and critical thinking abilities. I am enthusiastic about
-                    leveraging my knowledge to contribute to innovative solutions and
-                    continuously grow as a developer.
-                </p>
-            </section>
-
-            <!-- ===== Skills Section ===== -->
-            <section id="skills" class="main-content-containers">
-                <h2>Skills</h2>
-                <div class="skills-container">
-
-                    <!-- Web Tech -->
-                    <div class="card html" title="HTML5">
-                        <i class="fa-brands fa-html5" style="color:#e34c26; font-size: 40px;"></i>
-                        <!-- <p>HTML5</p> -->
-                    </div>
-                    <div class="card css" title="CSS3">
-                        <i class="fa-brands fa-css3-alt" style="color:#264de4; font-size: 40px;"></i>
-                        <!-- <p>CSS3</p> -->
-                    </div>
-                    <div class="card js" title="JavaScript, ES6">
-                        <i class="fa-brands fa-js" style="color:#f7df1e;font-size: 40px;"></i>
-                        <!-- <p>JavaScript</p> -->
-                    </div>
-                    <div class="card react" title="React">
-                        <i class="fa-brands fa-react" style="color:#61dafb; font-size: 40px;"></i>
-                        <!-- <p>React</p> -->
-                    </div>
-                    <div class="card tailwind" title="Tailwind CSS">
-                        <i class="devicon-tailwindcss-plain" style="color:#38b2ac;font-size: 40px;"></i>
-                        <!-- <p>Tailwind CSS</p> -->
-                    </div>
-
-                    <!-- Version Control -->
-                    <div class="card git-github" title="Git & GitHub">
-                        <i class="fa-brands fa-git-alt" style="color:#f05032; font-size: 40px;"></i>
-                        <!-- <p>Git & GitHub</p> -->
-                    </div>
-
-                    <!-- Programming Languages -->
-                    <div class="card languages" title="Programming languages">
-                        <div class="language-icons"
-                            style="display:flex; gap:10px; justify-content:center; align-items:center;">
-                            <i class="devicon-c-plain colored" style="font-size:20px;"></i>
-                            <i class="devicon-cplusplus-plain colored" style="font-size:20px;"></i>
-                            <i class="devicon-python-plain colored" style="font-size:20px;"></i>
-                        </div>
-                        <!-- <p>C, C++, Python</p> -->
-                    </div>
-
-                    <!-- DSA -->
-                    <div class="card dsa" title="Data Structures & Algorithms">
-                        <i class="fa-solid fa-diagram-project" style="color:#eb9412; font-size: 40px;"></i>
-                        <!-- <p>DSA</p> -->
-                    </div>
-
-                    <!-- Backend -->
-                    <div class="card node" title="Node JS">
-                        <i class="fa-brands fa-node" style="color:#3c873a; font-size: 40px;"></i>
-                        <!-- <p>Node.js</p> -->
-                    </div>
-                    <div class="card express" title="Express JS">
-                        <i class="fa-solid fa-server" style="color:#aaa8a6; font-size: 40px;"></i>
-                        <!-- <p>Express.js</p> -->
-                    </div>
-                    <div class="card mongodb" title="MongoDB">
-                        <i class="fa-solid fa-database" style="color:#4db33d; font-size: 40px;"></i>
-                        <!-- <p>MongoDB</p> -->
-                    </div>
-
-                    <!-- Tools -->
-                    <div class="card postman" title="Postman">
-                        <!-- Custom SVG -->
-                        <svg width="40" height="40" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="postmanGrad" x1="0" y1="0" x2="1" y2="1">
-                                    <stop offset="0%" stop-color="#FF6C37" />
-                                    <stop offset="100%" stop-color="#FF9900" />
-                                </linearGradient>
-                            </defs>
-                            <path fill="url(#postmanGrad)"
-                                d="M12 2C6.477 2 2 6.477 2 12c0 5.522 4.477 10 10 10 5.522 0 10-4.478 10-10 0-5.523-4.478-10-10-10zm0 2a8 8 0 1 1 0 16 8 8 0 0 1 0-16zm-1 3h2v6h-2V7zm0 8h2v2h-2v-2z" />
-                        </svg>
-                        <!-- <p>Postman</p> -->
-                    </div>
-                    <div class="card thunderclient" title="Thunderclient">
-                        <!-- Custom SVG -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
-                            <path fill="#5E5E5E" d="M2 2h20v20H2z" />
-                            <path fill="#FF9900" d="M12 4l8 16H4z" />
-                        </svg>
-                        <!-- <p>Thunder Client</p> -->
-                    </div>
-                </div>
-            </section>
-
-            <!-- ===== Competitive Programming Section ===== -->
-            <section id="competitive" class="main-content-containers">
-                <span class="some-gap"></span>
-                <h2>Competitive Programming</h2>
-                <div class="competitive-dashboard">
-                    <div class="platform-cards">
-                        <!-- LeetCode -->
-                        <div class="platform-card leetcode">
-                            <div class="platform-header">
-                                <img src="images/icons/platforms/leetcode.svg" alt="LeetCode">
-                                <h3>LeetCode</h3>
-                                <a href="https://leetcode.com/u/hello_to_shiva/" target="_blank" class="profile-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                            <div class="stats">
-                                <div class="stat-item">
-                                    <span class="label">Problems Solved</span>
-                                    <span class="leetcode problems-solved">Loading...</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="label">Global Ranking</span>
-                                    <span class="leetcode ranking">Loading...</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="label">Acceptance Rate</span>
-                                    <span class="leetcode acceptance-rate">Loading...</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="leetcode progress" style="width: 0%"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- GFG -->
-                        <div class="platform-card gfg">
-                            <div class="platform-header">
-                                <img src="images/icons/platforms/gfg.svg" alt="GeeksforGeeks">
-                                <h3>GeeksforGeeks</h3>
-                                <a href="https://auth.geeksforgeeks.org/user/tomarsh3rre/" target="_blank"
-                                    class="profile-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                            <div class="stats">
-                                <div class="stat-item">
-                                    <span class="label">Problems Solved</span>
-                                    <span class="gfg problems-solved">Loading...</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="label">Coding Score</span>
-                                    <span class="gfg coding-score">Loading...</span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="label">Institute Rank</span>
-                                    <span class="gfg institute-rank">Loading...</span>
-                                </div>
-                                <div class="progress-bar">
-                                    <div class="gfg progress" style="width: 0%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Interview Bit -->
-                        <div class="platform-card gfg">
-                            <div class="platform-header">
-                                <img src="images/icons/platforms/interviewbit.svg" alt="interviewbit">
-                                <h3><b>Interview</b> Bit</h3>
-                                <a href="https://www.interviewbit.com/profile/shiva-tomar_421/" target="_blank"
-                                    class="profile-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- hacker Rank -->
-                        <div class="platform-card gfg">
-                            <div class="platform-header">
-                                <img src="images/icons/platforms/hackerrank.svg" alt="hackerrank">
-                                <h3>HackerRank</h3>
-                                <a href="https://www.hackerrank.com/profile/tomarshiva403" target="_blank"
-                                    class="profile-link">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ===== Education Section ===== -->
-            <section id="education" class="main-content-containers">
-                <h2>Education</h2>
-                <div class="education-card-container">
-                    <div class="education-card">
-                        <span class="bubble"></span>
-                        <span>2023 - Present</span>
-                        <h3>Bachelor of Technology in CSE</h3>
-                        <h5><i>Madhav Institute of Technology & Science, Gwalior (M.P.)</i></h5>
-                        <p>Focused on learning Algorithms, DBMS, Computer Networks and Operating Systems. Enhancing my
-                            skills in web development.</p>
-                    </div>
-                    <div class="education-card">
-                        <span class="bubble"></span>
-                        <span>2020 - 2022</span>
-                        <h3>Higher Secondary</h3>
-                        <h5><i>ST. Mary's School, Morena (M.P.)</i></h5>
-                        <p>Excelled academically, learned discipline and leadership. Served as <strong>Head Boy</strong>
-                            of my school.</p>
-                    </div>
-                    <div class="education-card">
-                        <span class="bubble"></span>
-                        <span>2017 - 2020</span>
-                        <h3>High School</h3>
-                        <h5><i>ST. Mary's School, Morena (M.P.)</i></h5>
-                        <p>Learned teamwork and actively participated in school programs.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ===== Projects Section ===== -->
-            <section id="projects" class="main-content-containers">
-                <h2>Projects</h2>
-                <div class="projects-container">
-
-                    <!-- Project Card-Portfolio -->
-                    <div class="project-container-card">
-                        <img src="images/projects/portfolio.png" alt="portfolio">
-                        <h4>Portfolio</h4>
-                        <p>A fully responsive Portfolio website showcasing my skills, projects, and achievements.
-                            It includes sections for about me, skills, projects, and contact information.</p>
-                        </p>
-                        <div class="project-bottom-container">
-                            <div class="tech-used">
-                                <div>HTML</div>
-                                <div>CSS</div>
-                                <div>JS</div>
-                                <div>Express JS</div>
-                                <div>Nodemailer</div>
-                            </div>
-
-                            <!-- Overlay Links -->
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Shiva-005/PORTFOLIO/">
-                                <img src="images/icons/projectHyperIcons/github.svg" alt="" style="width: 30px;">
-                            </a>
-                            <a href="https://shiva-dev-portfolio.onrender.com/">
-                                <i class="fas fa-external-link-alt" style="font-size: 20px;"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Project-container-card Poll Management App -->
-                    <div class="project-container-card">
-                        <img src="images/projects/pollmanager.png" alt="pollmanager">
-                        <h4>Poll Manager</h4>
-                        <p>A simple yet powerful tool
-                        designed to help you <strong>create, share, and participate</strong> in
-                        polls effortlessly.</p>
-                        </p>
-                        <div class="project-bottom-container">
-                            <div class="tech-used">
-                                <div>Node JS</div>
-                                <div>Express JS</div>
-                                <div>MongoDB</div>
-                                <div>EJS</div>
-                                <div>CSS</div>
-                                <div>JS</div>
-                            </div>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Shiva-005/POLL-VOTING-APP">
-                                <img src="images/icons/projectHyperIcons/github.svg" alt="" style="width: 50px;">
-                            </a>
-                            <a href="https://github.com/Shiva-005/POLL-VOTING-APP">
-                                <i class="fas fa-external-link-alt" style="font-size: 20px;"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Project Card-Plant_Leafs_Disease_Detection -->
-                    <div class="project-container-card">
-                        <img src="images/projects/phytoCure.png" alt="portfolio">
-                        <h4>PhytoCure</h4>
-                        <p>An intelligent plant leaf disease detection system that analyzes leaf images to identify diseases.
-                        It also provides possible causes and recommended cures to help prevent crop damage.</p>
-                        </p>
-                        <div class="project-bottom-container">
-                            <div class="tech-used">
-                                <div>React+Tailwind CSS</div>
-                                <div>Express JS</div>
-                                <div>Python</div>
-                                <div>Tensorflow</div>
-                                <div>EfficientNet</div>
-                                <div>Flask</div>
-                            </div>
-                    
-                            <!-- Overlay Links -->
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Shiva-005/Crop_Disease_Detection">
-                                <img src="images/icons/projectHyperIcons/github.svg" alt="" style="width: 30px;">
-                            </a>
-                            <a href="https://github.com/Shiva-005/Crop_Disease_Detection">
-                                <i class="fas fa-external-link-alt" style="font-size: 20px;"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Contact Me section -->
-            <section id="contactMe" class="main-content-containers">
-                <h2>Contact Me</h2>
-                <form id="contact-form">
-                    <input type="text" name="name" id="name" placeholder="Your Name" required>
-                    <input type="email" name="email" id="email" placeholder="Your Email" required>
-                    <textarea name="message" id="message" rows="5" placeholder="Your Message" required></textarea>
-                    <button type="submit">Send Message</button>
-                </form>
-
-                <p id="responseMsg" style="margin-top: 10px; font-weight: bold;"></p>
-            </section>
-
-            <p id="Copyrights">&copy; All Copyrights are reserved.</p>
-        </main>
-    </div>
-
-    
-    <script src="js/animationBgScript.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/cp-stats.js"></script>
 </body>
 
 </html>

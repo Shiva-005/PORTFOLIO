@@ -1,0 +1,102 @@
+ #education {
+     max-width: 900px;
+     margin: 0 auto;
+ }
+
+ .education-card-container {
+     position: relative;
+     padding-left: 36px;
+     display: flex;
+     flex-direction: column;
+ }
+
+ .education-card-container::before {
+     content: '';
+     position: absolute;
+     left: 7px;
+     top: 16px;
+     bottom: 16px;
+     width: 1px;
+     background: linear-gradient(to bottom, var(--cyan) 0%, var(--border) 60%, transparent 100%);
+ }
+
+ .education-card {
+     position: relative;
+     padding: 0 0 52px 28px;
+ }
+
+ .education-card:last-child {
+     padding-bottom: 0;
+ }
+
+ .education-card .bubble {
+     position: absolute;
+     left: -36px;
+     top: 33px;
+     width: 16px;
+     height: 16px;
+     border-radius: 50%;
+     border: 2px solid var(--cyan);
+     background: var(--bg);
+     box-shadow: 0 0 16px var(--cyan-glow);
+     z-index: 1;
+     transition: transform 0.3s;
+ }
+
+ .education-card:hover .bubble {
+     transform: scale(1.4);
+ }
+
+ .edu-inner {
+     background: var(--surface);
+     border: 1px solid var(--border);
+     border-radius: 18px;
+     padding: 28px;
+     backdrop-filter: blur(12px);
+     transition: border-color 0.3s, transform 0.3s;
+ }
+
+ .education-card:hover .edu-inner {
+     border-color: var(--border-h);
+     transform: translateX(6px);
+ }
+
+ .edu-year {
+     font-family: 'DM Mono', monospace;
+     font-size: 0.68rem;
+     letter-spacing: 0.12em;
+     text-transform: uppercase;
+     color: var(--cyan);
+     margin-bottom: 8px;
+     display: inline-block;
+     background: var(--cyan-dim);
+     padding: 4px 10px;
+     border-radius: 100px;
+     border: 1px solid rgba(0, 229, 255, 0.2);
+ }
+
+ .edu-inner h3 {
+     font-size: 1.05rem;
+     font-weight: 700;
+     color: var(--text);
+     margin-bottom: 4px;
+ }
+
+ .edu-inner h5 {
+     font-size: 0.8rem;
+     color: var(--text-2);
+     font-weight: 400;
+     font-style: italic;
+     margin-bottom: 12px;
+ }
+
+ .edu-inner p {
+     font-size: 0.85rem;
+     color: var(--text-2);
+     line-height: 1.7;
+ }
+
+ .edu-inner p strong {
+     color: var(--cyan);
+     font-weight: 600;
+ }

@@ -1,0 +1,26 @@
+@import './base/reset.css';
+@import './base/variables.css';
+@import './base/base.css';
+
+@import './components/cursor.css';
+@import './components/navbar.css';
+@import './components/buttons.css';
+@import './components/cards.css';
+@import './components/forms.css';
+@import './components/footer.css';
+@import './components/toast.css';
+
+@import './layout/sections.css';
+@import './layout/grid.css';
+
+@import './sections/hero.css';
+@import './sections/about.css';
+@import './sections/skills.css';
+@import './sections/projects.css';
+@import './sections/contact.css';
+@import './sections/education.css';
+@import './sections/competitive.css';
+
+@import './utilities/animations.css';
+@import './utilities/helpers.css';
+@import './utilities/responsive.css';

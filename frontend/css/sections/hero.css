@@ -1,0 +1,311 @@
+ #hero {
+     min-height: 100vh;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     position: relative;
+     overflow: hidden;
+     padding: var(--nav-h) 48px 0;
+ }
+
+ #animationCanvas {
+     position: absolute;
+     inset: 0;
+     z-index: 0;
+ }
+
+ /* Gradient mesh orbs */
+ .orb {
+     position: absolute;
+     border-radius: 50%;
+     filter: blur(80px);
+     opacity: 0.18;
+     pointer-events: none;
+     z-index: 0;
+ }
+
+ .orb-1 {
+     width: 600px;
+     height: 600px;
+     background: var(--cyan);
+     top: -200px;
+     right: -100px;
+     animation: orb-float 12s ease-in-out infinite;
+ }
+
+ .orb-2 {
+     width: 400px;
+     height: 400px;
+     background: var(--magenta);
+     bottom: -100px;
+     left: -100px;
+     animation: orb-float 16s ease-in-out infinite reverse;
+ }
+
+ .orb-3 {
+     width: 300px;
+     height: 300px;
+     background: var(--gold);
+     top: 40%;
+     left: 40%;
+     animation: orb-float 10s ease-in-out infinite 3s;
+ }
+
+ @keyframes orb-float {
+
+     0%,
+     100% {
+         transform: translate(0, 0) scale(1);
+     }
+
+     33% {
+         transform: translate(30px, -40px) scale(1.05);
+     }
+
+     66% {
+         transform: translate(-20px, 20px) scale(0.95);
+     }
+ }
+
+ /* Floating 3D shapes */
+ .shape-3d {
+     position: absolute;
+     pointer-events: none;
+     z-index: 1;
+ }
+
+ .shape-ring {
+     width: 120px;
+     height: 120px;
+     border: 2px solid rgba(0, 229, 255, 0.2);
+     border-radius: 50%;
+     top: 15%;
+     right: 18%;
+     animation: spin-slow 20s linear infinite, float-y 8s ease-in-out infinite;
+ }
+
+ .shape-ring::before {
+     content: '';
+     position: absolute;
+     inset: 12px;
+     border: 1px solid rgba(0, 229, 255, 0.15);
+     border-radius: 50%;
+ }
+
+ .shape-square {
+     width: 60px;
+     height: 60px;
+     border: 1.5px solid rgba(255, 45, 120, 0.25);
+     transform: rotate(45deg);
+     bottom: 28%;
+     left: 8%;
+     animation: spin-slow 25s linear infinite reverse, float-y 10s ease-in-out infinite 2s;
+ }
+
+ .shape-dots {
+     width: 80px;
+     height: 80px;
+     bottom: 20%;
+     right: 12%;
+     animation: float-y 7s ease-in-out infinite 1s;
+     background-image: radial-gradient(circle, rgba(0, 229, 255, 0.35) 1.5px, transparent 1.5px);
+     background-size: 14px 14px;
+ }
+
+ @keyframes spin-slow {
+     to {
+         transform: rotate(360deg);
+     }
+ }
+
+ @keyframes float-y {
+
+     0%,
+     100% {
+         transform: translateY(0)
+     }
+
+     50% {
+         transform: translateY(-18px)
+     }
+ }
+
+ .shape-square {
+     animation: spin-float 18s linear infinite;
+ }
+
+ @keyframes spin-float {
+     0% {
+         transform: rotate(45deg) translateY(0);
+     }
+
+     50% {
+         transform: rotate(225deg) translateY(-18px);
+     }
+
+     100% {
+         transform: rotate(405deg) translateY(0);
+     }
+ }
+
+ .hero-content {
+     position: relative;
+     z-index: 2;
+     max-width: 800px;
+     text-align: center;
+ }
+
+ .hero-badge {
+     display: inline-flex;
+     align-items: center;
+     gap: 8px;
+     border: 1px solid var(--border);
+     background: var(--glass);
+     backdrop-filter: blur(12px);
+     padding: 6px 16px;
+     border-radius: 100px;
+     font-size: 0.72rem;
+     font-weight: 500;
+     letter-spacing: 0.1em;
+     text-transform: uppercase;
+     color: var(--cyan);
+     margin-bottom: 28px;
+     animation: fade-down 0.6s ease both;
+ }
+
+ .hero-badge-dot {
+     width: 6px;
+     height: 6px;
+     border-radius: 50%;
+     background: var(--cyan);
+     animation: pulse-dot 2s infinite;
+ }
+
+ .hero-name {
+     font-size: clamp(3rem, 8vw, 6.5rem);
+     font-weight: 900;
+     line-height: 1.0;
+     letter-spacing: -0.03em;
+     margin-bottom: 16px;
+     animation: fade-up 0.7s 0.1s ease both;
+ }
+
+ .hero-name-line1 {
+     display: block;
+     color: var(--text);
+ }
+
+ .hero-name-line2 {
+     display: block;
+     background: linear-gradient(135deg, var(--cyan) 0%, var(--teal) 50%, var(--magenta) 100%);
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+     background-clip: text;
+ }
+
+ .hero-typed-wrap {
+     height: 32px;
+     margin-bottom: 28px;
+     animation: fade-up 0.7s 0.2s ease both;
+ }
+
+ .hero-typed {
+     font-family: 'DM Mono', monospace;
+     font-size: 1rem;
+     font-weight: 400;
+     color: var(--text-2);
+     letter-spacing: 0.05em;
+ }
+
+ .hero-typed-cursor {
+     display: inline-block;
+     width: 2px;
+     height: 1.1em;
+     background: var(--cyan);
+     margin-left: 2px;
+     vertical-align: text-bottom;
+     animation: blink 0.9s step-end infinite;
+ }
+
+ @keyframes blink {
+
+     0%,
+     100% {
+         opacity: 1
+     }
+
+     50% {
+         opacity: 0
+     }
+ }
+
+ .hero-desc {
+     font-size: 1.05rem;
+     font-weight: 300;
+     line-height: 1.8;
+     color: var(--text-2);
+     max-width: 540px;
+     margin: 0 auto 40px;
+     animation: fade-up 0.7s 0.3s ease both;
+ }
+
+ .hero-btns {
+     display: flex;
+     gap: 16px;
+     justify-content: center;
+     flex-wrap: wrap;
+     animation: fade-up 0.7s 0.4s ease both;
+ }
+
+ /* Modal Background */
+ .resume-modal {
+     display: none;
+     /* Hidden by default */
+     position: fixed;
+     z-index: 9999;
+     left: 0;
+     top: 0;
+     width: 100%;
+     height: 100%;
+     overflow: auto;
+     background-color: rgba(5, 5, 8, 0.95);
+     /* semi-transparent dark */
+ }
+
+ /* Modal Content */
+ .resume-modal-content {
+     position: relative;
+     margin: 5% auto;
+     width: 80%;
+     max-width: 900px;
+     height: 80%;
+     background: var(--bg1);
+     border-radius: 12px;
+     box-shadow: 0 10px 40px rgba(0, 229, 255, 0.2);
+     overflow: hidden;
+     display: flex;
+     flex-direction: column;
+ }
+
+ /* Close Button */
+ .resume-modal-close {
+     position: absolute;
+     top: 12px;
+     right: 16px;
+     font-size: 2rem;
+     color: var(--cyan);
+     cursor: pointer;
+     transition: transform 0.2s;
+ }
+
+ .resume-modal-close:hover {
+     transform: scale(1.2);
+ }
+
+ /* PDF iframe */
+ .resume-modal iframe {
+     width: 100%;
+     height: 100%;
+     border: none;
+     flex-grow: 1;
+ }

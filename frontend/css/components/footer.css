@@ -1,0 +1,70 @@
+footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+#Copyrights {
+    font-size: 0.75rem;
+    color: var(--text-2);
+    letter-spacing: 0.05em;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links a {
+    font-size: 0.75rem;
+    color: var(--text-2);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: var(--cyan);
+}
+
+/* ═══════════════════════════════════════
+   BACK TO TOP
+═══════════════════════════════════════ */
+#back-top {
+    position: fixed;
+    bottom: 36px;
+    right: 36px;
+    z-index: 500;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--glass);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-2);
+    font-size: 0.9rem;
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: opacity 0.3s, transform 0.3s, color 0.2s, border-color 0.2s;
+}
+
+#back-top.show {
+    opacity: 1;
+    pointer-events: all;
+    transform: none;
+}
+
+#back-top:hover {
+    color: var(--cyan);
+    border-color: var(--border-h);
+}

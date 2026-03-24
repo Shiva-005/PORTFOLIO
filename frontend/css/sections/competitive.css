@@ -1,0 +1,216 @@
+#competitive {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.competitive-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.platform-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.platform-card {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px;
+    backdrop-filter: blur(16px);
+    transition: border-color 0.35s, transform 0.35s, box-shadow 0.35s;
+    overflow: hidden;
+}
+
+.platform-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+    transition: left 0.6s ease;
+}
+
+.platform-card:hover {
+    border-color: var(--border-h);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0, 229, 255, 0.1);
+}
+
+.platform-card:hover::after {
+    left: 100%;
+}
+
+.platform-card:hover .platform-logo img {
+    filter: brightness(1.2);
+}
+
+.platform-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+}
+
+.platform-logo {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg3);
+}
+
+.platform-logo img {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+    filter: brightness(0.9);
+    transition: 0.3s;
+}
+
+.platform-logo svg {
+    width: 24px;
+    height: 24px;
+}
+
+.platform-header h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    flex: 1;
+    color: var(--text);
+}
+
+.profile-link {
+    color: var(--text-2);
+    font-size: 0.8rem;
+    text-decoration: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.profile-link:hover {
+    color: var(--cyan);
+    border-color: var(--border-h);
+    background: var(--cyan-dim);
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.stat-item:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.stat-item .label {
+    font-size: 0.75rem;
+    color: var(--text-2);
+    font-weight: 400;
+}
+
+.stat-item .value-wrap {
+    text-align: right;
+}
+
+.stat-item span:not(.label) {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--cyan);
+}
+
+.progress-bar-wrap {
+    margin-top: 16px;
+}
+
+.progress-bar-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.68rem;
+    color: var(--text-2);
+    margin-bottom: 6px;
+}
+
+.progress-bar {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--cyan), var(--teal));
+    border-radius: 4px;
+    width: 0%;
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 8px var(--cyan-glow);
+}
+
+.fallback-ui {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.mono {
+    font-family: 'DM Mono', monospace;
+    color: cyan;
+}
+
+.status-error {
+    color: #ff4d4f;
+    font-size: 0.8rem;
+}
+
+/* ---------- Skeleton Loading ---------- */
+.skeleton {
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.skeleton::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.08),
+            transparent);
+    animation: shimmer 1.2s infinite;
+}
+
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}

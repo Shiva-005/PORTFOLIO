@@ -1,0 +1,68 @@
+<section id="hero">
+    <canvas id="animationCanvas"></canvas>
+
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <div class="shape-3d shape-ring"></div>
+    <div class="shape-3d shape-square"></div>
+    <div class="shape-3d shape-dots"></div>
+
+    <div class="hero-content">
+        <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            Available for opportunities
+        </div>
+
+        <h1 class="hero-name">
+            <span class="hero-name-line1">Shiva Singh</span>
+            <span class="hero-name-line2">Tomar</span>
+        </h1>
+
+        <div class="hero-typed-wrap">
+            <span class="hero-typed" id="hero-typed"></span><span class="hero-typed-cursor"></span>
+        </div>
+
+        <p class="hero-desc">
+            B.Tech CSE student at MITS Gwalior. Building fast, elegant web apps with Node.js, React,Tailwind css and MongoDB.
+            Passionate about DSA and shipping real-world products.
+        </p>
+
+        <div class="hero-btns">
+            <a href="#projects" class="btn-primary">
+                <i class="fas fa-rocket"></i> View Projects
+            </a>
+            <a href="./assets/pdfs/Shiva_Singh_Tomar_Resume.pdf" target="_blank" class="btn-secondary">
+                <i class="fas fa-eye"></i> View Resume
+            </a>
+            
+            <a href="./assets/pdfs/Shiva_Singh_Tomar_Resume.pdf" download class="btn-secondary resume-download">
+                <i class="fas fa-download"></i> Download Resume
+            </a>
+        </div>
+        <!-- Resume Preview Modal -->
+        <div id="resumeModal" class="resume-modal">
+            <div class="resume-modal-content">
+                <span class="resume-modal-close">&times;</span>
+                <iframe id="resumeIframe" src="./assets/pdfs/Shiva_Singh_Tomar_Resume.pdf" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+        <div class="scroll-line"></div>
+        <span class="scroll-label">scroll</span>
+    </div>
+
+    <div class="hero-stats">
+        <div class="hero-stat">
+            <div class="hero-stat-num">3<span>+</span></div>
+            <div class="hero-stat-label">Projects Built</div>
+        </div>
+        <div class="hero-stat">
+            <div class="hero-stat-num">4<span>+</span></div>
+            <div class="hero-stat-label">Platforms Active</div>
+        </div>
+    </div>
+</section>

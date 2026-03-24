@@ -1,0 +1,18 @@
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    scrollbar-width: none;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    -ms-overflow-style: none;
+    cursor: none;
+}
+
+
+::-webkit-scrollbar {
+    display: none;
+}

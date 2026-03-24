@@ -1,0 +1,69 @@
+@media (max-width: 1024px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-profile-wrap {
+        display: none;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-stats {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    #navbar {
+        padding: 0 20px;
+    }
+
+    .nav-links,
+    .nav-cta {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .section {
+        padding: 80px 20px 60px;
+    }
+
+    #hero {
+        padding: var(--nav-h) 20px 0;
+    }
+
+    .hero-btns {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-highlights {
+        grid-template-columns: 1fr;
+    }
+
+    .platform-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .projects-container {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-name {
+        font-size: 2.6rem;
+    }
+}

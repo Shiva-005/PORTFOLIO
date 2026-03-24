@@ -1,0 +1,56 @@
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--cyan);
+    color: #050508;
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 0.88rem;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0, 229, 255, 0.4);
+}
+
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--text);
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.btn-secondary:hover {
+    transform: translateY(-3px);
+    border-color: var(--border-h);
+    background: var(--glass);
+}
+
+.resume-download {
+    border-color: var(--cyan);
+    color: var(--cyan);
+}
+
+.resume-download:hover {
+    background: rgba(0, 229, 255, 0.08);
+    border-color: var(--cyan);
+    color: var(--cyan);
+    box-shadow: 0 8px 30px rgba(0, 229, 255, 0.15);
+}

@@ -1,0 +1,99 @@
+#skills {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.skills-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+}
+
+.skill-category-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-2);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.skill-category-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+.skills-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.skill-card {
+    position: relative;
+    background: var(--glass);
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: default;
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s, background 0.3s;
+    backdrop-filter: blur(12px);
+    min-width: 140px;
+    overflow: hidden;
+}
+
+.skill-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--cyan-dim);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.skill-card:hover {
+    border-color: var(--border-h);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 16px 40px rgba(0, 229, 255, 0.15);
+}
+
+.skill-card:hover::before {
+    opacity: 1;
+}
+
+.skill-card:hover .skill-icon {
+    animation: icon-bounce 0.5s ease;
+}
+
+.skill-icon {
+    font-size: 1.6rem;
+    z-index: 1;
+    transition: transform 0.3s;
+    line-height: 1;
+}
+
+.skill-info {
+    z-index: 1;
+}
+
+.skill-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: 0.02em;
+}
+
+.skill-type {
+    font-size: 0.68rem;
+    color: var(--text-2);
+    letter-spacing: 0.05em;
+    margin-top: 1px;
+}

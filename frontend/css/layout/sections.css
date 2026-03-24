@@ -1,0 +1,36 @@
+ .section {
+     padding: 120px 48px 100px;
+     position: relative;
+ }
+
+ .section+.section {
+     border-top: 1px solid var(--border);
+ }
+
+ .section-tag {
+     display: inline-flex;
+     align-items: center;
+     gap: 8px;
+     font-family: 'DM Mono', monospace;
+     font-size: 0.7rem;
+     letter-spacing: 0.16em;
+     text-transform: uppercase;
+     color: var(--cyan);
+     margin-bottom: 16px;
+ }
+
+ .section-tag::before {
+     content: '';
+     width: 24px;
+     height: 1px;
+     background: var(--cyan);
+ }
+
+ .section-title {
+     font-size: clamp(2rem, 4vw, 3.2rem);
+     font-weight: 800;
+     line-height: 1.1;
+     letter-spacing: -0.02em;
+     color: var(--text);
+     margin-bottom: 60px;
+ }
