@@ -1,25 +1,19 @@
-const sendEmail = require('../nodemailer.js');
+const asyncHandler = require('../utils/asyncHandler');
+const { sendMail } = require('../services/mailService');
 
-exports.submitContactForm = async (req, res) => {
-    try {
-        const { name, email, message } = req.body;
+exports.contactForm = asyncHandler(async (req, res) => {
+    const { name, email, message } = req.body;
 
-        if (!name || !email || !message) {
-            return res.status(400).json({ error: "All fields are required" });
-        }
-
-        // Send email notification
-        try {
-            await sendEmail(name, email, message);
-            console.log("✅ Email sent successfully");
-        } catch (emailErr) {
-            console.error("❌ Error sending email:", emailErr);
-        }
-
-        // Send success response
-        res.json({ message: "Form submitted successfully!" });
-
-    } catch (err) {
-        res.status(500).json({ error: "Failed to sendEmail to this contact" });
+    // ✅ Validation
+    if (!name || !email || !message) {
+        res.status(400);
+        throw new Error('All fields are required');
     }
-};
+
+    await sendMail({ name, email, message });
+
+    res.status(200).json({
+        success: true,
+        message: 'Message sent successfully',
+    });
+});

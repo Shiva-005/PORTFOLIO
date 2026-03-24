@@ -1,14 +1,13 @@
-const axios = require('axios');
+const asyncHandler = require('../utils/asyncHandler');
+const { getGfgData } = require('../services/gfgService');
 
-exports.getGFGProfile = async (req, res) => {
-    try {
-        const { username } = req.params;
-        const response = await axios.get(
-            `https://authapi.geeksforgeeks.org/api-get/user-profile-info/?handle=${username}`
-        );
-        res.json(response.data);
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: 'Failed to fetch GFG profile' });
-    }
-};
+exports.getGfgStats = asyncHandler(async (req, res) => {
+    const { username } = req.params;
+
+    const data = await getGfgData(username);
+
+    res.status(200).json({
+        success: true,
+        data,
+    });
+});
