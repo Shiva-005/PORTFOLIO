@@ -46,6 +46,7 @@ export default class CPStats {
     async getGFGStats() {
         try {
             const res = await fetch(`${BASE_URL}/gfg/${this.gfgUsername}`);
+            console.log(BASE_URL);
             if (!res.ok) throw new Error();
             const data = await res.json();
             return data.data;
