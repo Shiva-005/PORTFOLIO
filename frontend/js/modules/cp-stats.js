@@ -4,7 +4,7 @@
 const BASE_URL =
     window.location.hostname === "localhost"
         ? "http://localhost:8000/api" // local backend
-        : "https://portfolio-iwxb.onrender.com";                     // production backend (same domain)
+        : "https://portfolio-iwxb.onrender.com/api";                     // production backend (same domain)
 
 export default class CPStats {
     constructor() {
