@@ -9,10 +9,17 @@
     gap: 24px;
 }
 
+/* 🔥 First row layout */
 .platform-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: 2fr 1fr;
     gap: 20px;
+}
+
+/* 🔥 Second row (other platforms) */
+.platform-card.gfg,
+.platform-card:nth-child(n+3) {
+    grid-column: span 1;
 }
 
 .platform-card {
@@ -207,6 +214,29 @@
             rgba(255, 255, 255, 0.08),
             transparent);
     animation: shimmer 1.2s infinite;
+}
+
+.analytics-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.chart-container {
+    height: 200px;
+    width: 100%;
+    position: relative;
+}
+
+.chart-container.small {
+    height: 140px;
+    opacity: 0.9;
+}
+
+.chart-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
 }
 
 @keyframes shimmer {

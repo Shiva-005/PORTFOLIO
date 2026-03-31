@@ -4,16 +4,19 @@
 
     <div class="competitive-dashboard">
         <div class="platform-cards">
-            <!-- LeetCode -->
             <div class="platform-card leetcode reveal delay-1">
+
                 <div class="platform-header">
                     <div class="platform-logo">
                         <img src="./assets/images/icons/platforms/leetcode.svg" alt="LeetCode">
                     </div>
                     <h3>LeetCode</h3>
-                    <a href="https://leetcode.com/u/hello_to_shiva/" target="_blank" class="profile-link"><i
-                            class="fas fa-external-link-alt"></i></a>
+                    <a href="https://leetcode.com/u/hello_to_shiva/" target="_blank" class="profile-link">
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
                 </div>
+
+                <!-- 🔥 Stats -->
                 <div class="stats">
                     <div class="stat-item">
                         <span class="label">Problems Solved</span>
@@ -24,16 +27,37 @@
                         <span class="leetcode ranking">—</span>
                     </div>
                     <div class="stat-item">
-                        <span class="label">Acceptance Rate</span>
-                        <span class="leetcode acceptance-rate">—</span>
+                        <span class="label">Contest Rating</span>
+                        <span class="leetcode contest-rating">—</span>
                     </div>
                 </div>
+
+                <!-- 🔥 Progress -->
                 <div class="progress-bar-wrap">
-                    <div class="progress-bar-label"><span>Progress</span><span class="leetcode progress-label">0%</span>
+                    <div class="progress-bar-label">
+                        <span>Progress</span>
+                        <span class="leetcode progress-label">0%</span>
                     </div>
                     <div class="progress-bar">
                         <div class="leetcode progress" style="width:0%"></div>
                     </div>
+                </div>
+
+            </div>
+
+            
+            <div class="platform-card analytics-card reveal delay-2">
+                <div class="platform-header">
+                    <div class="platform-logo">📊</div>
+                    <h3>Analytics</h3>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="leetcodeChart"></canvas>
+                </div>
+
+                <div class="chart-container small">
+                    <canvas id="analyticsChart"></canvas>
                 </div>
             </div>
 
@@ -44,29 +68,16 @@
                         <img src="./assets/images/icons/platforms/gfg.svg" alt="">
                     </div>
                     <h3>GeeksforGeeks</h3>
-                    <a href="https://auth.geeksforgeeks.org/user/tomarsh3rre/" target="_blank" class="profile-link"><i
-                            class="fas fa-external-link-alt"></i></a>
+                    <a href="https://www.geeksforgeeks.org/profile/tomarsh3rre?tab=activity" target="_blank"
+                        class="profile-link"><i class="fas fa-external-link-alt"></i></a>
                 </div>
                 <div class="stats">
-                    <div class="stat-item">
-                        <span class="label">Problems Solved</span>
-                        <span class="gfg problems-solved">—</span>
+                    <div class="stat-item"><span class="label">Username</span><span
+                            style="font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--cyan)">tomarsh3rre</span>
                     </div>
-                    <div class="stat-item">
-                        <span class="label">Coding Score</span>
-                        <span class="gfg coding-score">—</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="label">Institute Rank</span>
-                        <span class="gfg institute-rank">—</span>
-                    </div>
-                </div>
-                <div class="progress-bar-wrap">
-                    <div class="progress-bar-label"><span>Progress</span><span class="gfg progress-label">0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="gfg progress" style="width:0%"></div>
-                    </div>
+                    <div class="stat-item"><span class="label">Profile</span><span
+                            style="color:#00e564;font-size:0.8rem">●
+                            Active</span></div>
                 </div>
             </div>
 

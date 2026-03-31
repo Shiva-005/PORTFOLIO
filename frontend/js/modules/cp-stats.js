@@ -1,15 +1,13 @@
-// CPStats.js
-
-// ✅ Dynamically set BASE_URL for local and production
 const BASE_URL =
     window.location.hostname === "localhost"
-        ? "http://localhost:8000/api" // local backend
-        : "https://portfolio-iwxb.onrender.com/api";                     // production backend (same domain)
+        ? "http://localhost:8000/api"
+        : "https://portfolio-iwxb.onrender.com/api";
 
 export default class CPStats {
     constructor() {
         this.leetcodeUsername = 'hello_to_shiva';
-        this.gfgUsername = 'tomarsh3rre';
+        this.leetcodeChart = null;
+        this.analyticsChart = null;
     }
 
     safeSet(selector, value) {
@@ -35,23 +33,11 @@ export default class CPStats {
     async getLeetCodeStats() {
         try {
             const res = await fetch(`${BASE_URL}/leetcode/${this.leetcodeUsername}`);
-            console.log("BASE_URL= ",BASE_URL);
             if (!res.ok) throw new Error();
             const data = await res.json();
             return data.data;
-        } catch {
-            return null;
-        }
-    }
-
-    async getGFGStats() {
-        try {
-            const res = await fetch(`${BASE_URL}/gfg/${this.gfgUsername}`);
-            // console.log(BASE_URL);
-            if (!res.ok) throw new Error();
-            const data = await res.json();
-            return data.data;
-        } catch {
+        } catch (err) {
+            console.error("Fetch Error:", err);
             return null;
         }
     }
@@ -60,10 +46,7 @@ export default class CPStats {
         const selectors = [
             '.leetcode .problems-solved',
             '.leetcode .ranking',
-            '.leetcode .acceptance-rate',
-            '.gfg .problems-solved',
-            '.gfg .coding-score',
-            '.gfg .institute-rank'
+            '.leetcode .contest-rating',
         ];
 
         selectors.forEach(sel => {
@@ -83,8 +66,7 @@ export default class CPStats {
     }
 
     clearLoading(selector) {
-        const elements = document.querySelectorAll(selector);
-        elements.forEach(el => {
+        document.querySelectorAll(selector).forEach(el => {
             el.classList.remove("skeleton");
             el.style.width = "";
             el.style.height = "";
@@ -97,22 +79,23 @@ export default class CPStats {
 
         const stats = card.querySelector('.stats');
         const progressWrap = card.querySelector('.progress-bar-wrap');
+
         if (!stats) return;
 
         stats.innerHTML = `
-      <div class="stat-item">
-        <span class="label">Username</span>
-        <span style="font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--cyan)">
-          ${username}
-        </span>
-      </div>
-      <div class="stat-item">
-        <span class="label">Profile</span>
-        <span style="color:#00e564;font-size:0.8rem">
-          ● Active
-        </span>
-      </div>
-    `;
+        <div class="stat-item">
+            <span class="label">Username</span>
+            <span style="font-family:'DM Mono',monospace;font-size:0.8rem;color:var(--cyan)">
+                ${username}
+            </span>
+        </div>
+        <div class="stat-item">
+            <span class="label">Profile</span>
+            <span style="color:#00e564;font-size:0.8rem">
+                ● Active
+            </span>
+        </div>
+        `;
 
         if (progressWrap) {
             progressWrap.style.opacity = "0.3";
@@ -120,40 +103,103 @@ export default class CPStats {
         }
     }
 
+    renderLeetCodeChart(lc) {
+        const ctx = document.getElementById("leetcodeChart");
+        if (!ctx) return;
+
+        if (this.leetcodeChart) this.leetcodeChart.destroy();
+
+        this.leetcodeChart = new Chart(ctx, {
+            type: "doughnut",
+            data: {
+                labels: ["Easy", "Medium", "Hard"],
+                datasets: [{
+                    data: [
+                        lc.easySolved,
+                        lc.mediumSolved,
+                        lc.hardSolved
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: "#aaa",
+                            font: { size: 10 }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    renderAnalyticsChart(lc) {
+        const ctx = document.getElementById("analyticsChart");
+        if (!ctx) return;
+
+        if (this.analyticsChart) this.analyticsChart.destroy();
+
+        this.analyticsChart = new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: ["Solved", "Remaining"],
+                datasets: [{
+                    data: [
+                        lc.totalSolved,
+                        Math.max(2500 - lc.totalSolved, 0)
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: {
+                        ticks: { color: "#888" }
+                    },
+                    y: {
+                        ticks: { color: "#888" }
+                    }
+                }
+            }
+        });
+    }
+
     async updateDashboard() {
         this.setLoading();
 
-        const [lc, gfg] = await Promise.all([
-            this.getLeetCodeStats(),
-            this.getGFGStats()
-        ]);
+        const lc = await this.getLeetCodeStats();
 
-        // LeetCode
         if (lc && !this.isInvalid(lc.totalSolved) && !this.isInvalid(lc.globalRanking)) {
+
             this.clearLoading('.leetcode span');
             this.safeSet('.leetcode .problems-solved', lc.totalSolved);
             this.safeSet('.leetcode .ranking', lc.globalRanking);
-            this.safeSet('.leetcode .acceptance-rate', lc.contestRating ?? '—');
+            this.safeSet('.leetcode .contest-rating', lc.contestRating ?? '—');
+
 
             const progress = Math.min((lc.totalSolved / 2500) * 100, 100);
             this.safeWidth('.leetcode .progress', `${progress}%`);
             this.safeSet('.leetcode .progress-label', `${Math.floor(progress)}%`);
+
+
+            this.renderLeetCodeChart(lc);
+            this.renderAnalyticsChart(lc);
+
         } else {
             this.setError('.leetcode', this.leetcodeUsername);
         }
+    }
 
-        // GFG
-        if (gfg && !this.isInvalid(gfg.total_problems_solved) && !this.isInvalid(gfg.score)) {
-            this.clearLoading('.gfg span');
-            this.safeSet('.gfg .problems-solved', gfg.total_problems_solved);
-            this.safeSet('.gfg .coding-score', gfg.score);
-            this.safeSet('.gfg .institute-rank', gfg.institute_rank ?? '—');
-
-            const progress = Math.min((gfg.score / 1000) * 100, 100);
-            this.safeWidth('.gfg .progress', `${progress}%`);
-            this.safeSet('.gfg .progress-label', `${Math.floor(progress)}%`);
-        } else {
-            this.setError('.gfg', this.gfgUsername);
-        }
+    init() {
+        this.updateDashboard();
     }
 }

@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const contactRoutes = require('./routes/contactRoutes');
 const leetcodeRoutes = require('./routes/leetcodeRoutes');
-const gfgRoutes = require('./routes/gfgRoutes');
+
 
 const errorHandler = require('./middleware/errorHandler');
 const notFound = require('./middleware/notFound');
@@ -19,7 +19,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/contact', contactRoutes);
 app.use('/api/leetcode', leetcodeRoutes);
-app.use('/api/gfg', gfgRoutes);
 
 app.use(express.static(path.join(__dirname, '../frontend')));
 
