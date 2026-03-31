@@ -21,7 +21,7 @@ const sendMail = async ({ name, email, message }) => {
     const safeMessage = sanitize(message);
 
     await resend.emails.send({
-        from: process.env.FROM_EMAIL,
+        from: "Portfolio <onboarding@resend.dev>",
         to: process.env.TO_EMAIL,
         reply_to: safeEmail,
         subject: `Portfolio Contact from ${safeName}`,
